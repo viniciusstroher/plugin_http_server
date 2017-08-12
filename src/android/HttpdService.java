@@ -15,17 +15,11 @@ public class HttpdService extends Service {
         super.onCreate();
     }
     @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        try{
-            super.onStartCommand(intent, flags, startId);
-            //DataSync d = new DataSync(HttpdService.this);
-            //d.syncPendingNotes();
-
-            server = new App(intent.getIntExtra("PORTA"));
-            return START_NOT_STICKY;
-        }catch(Exception e){
-            Log.i(Httpd.LOG_TAG,"Error onStartCommand: "+e.getMessage());
-        }
+    public int onStartCommand(Intent intent, int flags, int startId) throws IOException,Exception {
+        String porta = intent.getStringExtra("PORTA");
+        int    portaI= Integer.parseInt(porta);
+        server       = new App(portaI);
+         
         return START_NOT_STICKY;
     }
     
