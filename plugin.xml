@@ -22,26 +22,26 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
            id="cordova-plugin-rtsp-w3"
       version="1.0">
-    <name>RTSP W3</name>
-    <description>RTSP W3 Player Plugin</description>
+    <name>HTTP SERVER</name>
+    <description>HTTP SERVER Plugin</description>
     <license>Apache 2.0</license>
-    <keywords>RTSP</keywords>
+    <keywords>HTTP SERVER</keywords>
 
     <engines>
         <engine name="cordova-android" version=">=3.6.0" /><!-- Requires CordovaPlugin.preferences -->
     </engines>
 
-    <js-module src="www/module.js" name="RtspW3">
+    <js-module src="www/module.js" name="Httpd">
         <!-- acessa como navigator.RtspW3 -->
-        <clobbers target="navigator.RtspW3" />
+        <clobbers target="navigator.httpd" />
     </js-module>
 
     <!-- android -->
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
             <!-- NOME QUE O cordova exec vai chamar e o mapa da classe principal-->
-            <feature name="RtspW3">
-                <param name="android-package" value="org.apache.cordova.rtspw3.RtspW3"/>
+            <feature name="Httpd">
+                <param name="android-package" value="org.apache.cordova.httpd.Httpd"/>
                 <param name="onload" value="true"/>
             </feature>
         </config-file>
@@ -49,7 +49,7 @@
         <!-- configuracoes de activity -->
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
             
-            <activity android:label="RTSP" android:name="org.apache.cordova.rtspw3.RtspW3Activity">
+            <!--<activity android:label="HTTPD" android:name="org.apache.cordova.httpd.RtspW3Activity">
             </activity>
 
             <activity android:name="io.vov.vitamio.activity.InitActivity" 
@@ -57,7 +57,7 @@
        android:launchMode="singleTop"
         android:theme="@android:style/Theme.NoTitleBar"
         android:windowSoftInputMode="stateAlwaysHidden"/>     
-        </config-file>
+        </config-file>-->
 
         <config-file target="AndroidManifest.xml" parent="/manifest">
             
@@ -71,9 +71,9 @@
         <!-- configuracoes de activity -->
 
         <!-- classes -->
-        <source-file src="src/android/FakeR.java"          target-dir="src/org/apache/cordova/rtspw3" />
-        <source-file src="src/android/RtspW3.java"         target-dir="src/org/apache/cordova/rtspw3" />
-        <source-file src="src/android/RtspW3Activity.java" target-dir="src/org/apache/cordova/rtspw3" />
+        <source-file src="src/android/FakeR.java"          target-dir="src/org/apache/cordova/httpd" />
+        <source-file src="src/android/Httpd.java"         target-dir="src/org/apache/cordova/httpd" />
+        <!--<source-file src="src/android/RtspW3Activity.java" target-dir="src/org/apache/cordova/httpd" />-->
         <!-- classes -->
 
         <!-- templates -->

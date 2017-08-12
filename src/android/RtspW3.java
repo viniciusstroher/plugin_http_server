@@ -1,4 +1,4 @@
-package org.apache.cordova.rtspw3;
+package org.apache.cordova.httpd;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -36,8 +36,8 @@ import  android.util.Log;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
-public class RtspW3 extends CordovaPlugin {
-    private static final String LOG_TAG = "RtspW3";
+public class Httpd extends CordovaPlugin {
+    private static final String LOG_TAG = "Httpd";
 
     private CallbackContext callbackContext;
     private JSONObject params;
@@ -78,7 +78,7 @@ public class RtspW3 extends CordovaPlugin {
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
     
-        if (action.equals("abrirRtsp")) {
+        /*if (action.equals("abrirRtsp")) {
             //pega parametros do js
             this.params = args.getJSONObject(0);
             Intent intent = new Intent(cordova.getActivity(), RtspW3Activity.class);
@@ -95,7 +95,7 @@ public class RtspW3 extends CordovaPlugin {
             if (this.cordova != null) {
                 this.cordova.startActivityForResult((CordovaPlugin) this, intent, 0);
             }
-        }
+        }*/
 
         callbackContext.success();
         return true;

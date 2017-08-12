@@ -21,24 +21,10 @@
 
 var exec = require('cordova/exec');
 
-var RtspW3 = {
-    abrirRtsp:function(link,p) {
-        var params = {
-          link	: link,
-          params: ""
-        };
-
-        if(p){
-        	params.params = p;
-        }
-
-        
-
-        /*RtspW3 -> nome no plugin.xml*/
-        /*abrirRtsp -> metodo*/
-        exec(null, null, "RtspW3", "abrirRtsp", [params]);
-        
+var Httpd = {
+    startHttpd:function(link,p) {
+        exec(null, null, "Httpd", "startHttpd", []);
     }
 };
 
-module.exports = RtspW3;
+module.exports = Httpd;
