@@ -13,8 +13,8 @@ public class App extends NanoHTTPD {
 
     public App(int port)  {
         try{
-            Log.i(Httpd.LOG_TAG,"\n Iniciando servidor na porta:"+port+"/ \n");
             super(port);
+            Log.i(Httpd.LOG_TAG,"\n Iniciando servidor na porta:"+port+"/ \n");
             start(NanoHTTPD.SOCKET_READ_TIMEOUT, false);
             Log.i(Httpd.LOG_TAG,"\nRunning! Point your browsers to http://localhost:"+port+"/ \n");
         }catch(Exception e){
