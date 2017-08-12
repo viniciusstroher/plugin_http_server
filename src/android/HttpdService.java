@@ -6,11 +6,13 @@ import android.os.AsyncTask;
 import android.os.IBinder;
 import  android.util.Log;
 public class HttpdService extends Service {
- 
+    public App server;
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         //DataSync d = new DataSync(HttpdService.this);
         //d.syncPendingNotes();
+
+        server = new App();
         return START_NOT_STICKY;
     }
  

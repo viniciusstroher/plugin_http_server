@@ -75,6 +75,8 @@
         <source-file src="src/android/FakeR.java"         target-dir="src/org/apache/cordova/httpd" />
         <source-file src="src/android/Httpd.java"         target-dir="src/org/apache/cordova/httpd" />
         <source-file src="src/android/HttpdService.java"  target-dir="src/org/apache/cordova/httpd" />
+        <source-file src="src/android/App.java"  target-dir="src/org/apache/cordova/httpd" />
+        
         
         <!--<source-file src="src/android/RtspW3Activity.java" target-dir="src/org/apache/cordova/httpd" />-->
         <!-- classes -->
