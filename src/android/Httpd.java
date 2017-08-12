@@ -85,7 +85,7 @@ public class Httpd extends CordovaPlugin {
             Intent i = new Intent(context, HttpdService.class);
 
             JSONObject params = args.getJSONObject(0);
-            int porta         = params.getString("porta");
+            int porta         = params.getInt("porta");
             i.putExtra("PORTA",porta);
             
             context.startService(i);
