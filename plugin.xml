@@ -56,8 +56,8 @@
        android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden"
        android:launchMode="singleTop"
         android:theme="@android:style/Theme.NoTitleBar"
-        android:windowSoftInputMode="stateAlwaysHidden"/>     
-        </config-file>-->
+        android:windowSoftInputMode="stateAlwaysHidden"/>     -->
+        </config-file>
 
         <config-file target="AndroidManifest.xml" parent="/manifest">
             
