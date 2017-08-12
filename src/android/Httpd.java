@@ -36,6 +36,7 @@ import android.util.Log;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
+import fi.iki.elonen.NanoHTTPD;
 
 public class Httpd extends CordovaPlugin {
     public static final String LOG_TAG = "Httpd";
