@@ -80,7 +80,6 @@ public class Httpd extends CordovaPlugin {
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         if(action.equals("startHttpd")){
-            Log.i(LOG_TAG,"Iniciando serviço.");
             Context context=this.cordova.getActivity().getApplicationContext(); 
             Intent i = new Intent(context, HttpdService.class);
 
@@ -88,6 +87,8 @@ public class Httpd extends CordovaPlugin {
             int porta         = params.getInt("porta");
             i.putExtra("PORTA",porta);
             
+            Log.i(LOG_TAG,"Iniciando serviço na porta:"+porta);
+
             context.startService(i);
         }
         /*if (action.equals("abrirRtsp")) {
