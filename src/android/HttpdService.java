@@ -13,11 +13,16 @@ public class HttpdService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) throws IOException{
         //DataSync d = new DataSync(HttpdService.this);
         //d.syncPendingNotes();
-        
+
         server = new App();
         return START_NOT_STICKY;
     }
- 
+    
+    @Override
+    public void onDestroy(){
+
+    }
+
     @Override
     public IBinder onBind(Intent arg0) {
         // Neste exemplo, iremos supor que o service será invocado apenas
