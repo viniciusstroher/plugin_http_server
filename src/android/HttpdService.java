@@ -24,7 +24,7 @@ public class HttpdService extends Service {
             server = new App();
             return START_NOT_STICKY;
         }catch(Exception e){
-            Log.i(HttpdService.LOG_TAG,"Error onStartCommand: "+e.getMessage());
+            Log.i(Httpd.LOG_TAG,"Error onStartCommand: "+e.getMessage());
         }
     }
     
