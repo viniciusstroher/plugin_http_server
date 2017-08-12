@@ -18,11 +18,11 @@ public class App extends NanoHTTPD {
     @Override
     public Response serve(IHTTPSession session) {
         //session.set
-
+        String hookReturn = "{api:'no hooks'}";
         if (!session.getUri().equalsIgnoreCase("/")){
-            return newFixedLengthResponse(Response.Status.NOT_FOUND, "text/json", "{api:true}");
+            hookReturn="{api:'working'}";
         }
-
+        return newFixedLengthResponse(Response.Status.NOT_FOUND, "text/json", );
         /*String msg = "<html><body><h1>Hello server</h1>\n";
         Map<String, String> parms = session.getParms();
         if (parms.get("username") == null) {
