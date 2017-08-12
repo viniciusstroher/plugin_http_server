@@ -12,7 +12,7 @@ public class HttpdService extends Service {
 
     @Override
     public void onCreate() {
-
+        super.onCreate();
     }
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) throws IOException{
