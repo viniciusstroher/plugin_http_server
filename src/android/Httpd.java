@@ -36,6 +36,7 @@ import  android.util.Log;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
+
 public class Httpd extends CordovaPlugin {
     private static final String LOG_TAG = "Httpd";
 
@@ -77,7 +78,11 @@ public class Httpd extends CordovaPlugin {
     //AQUI FICAO AS ACOES
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-    
+        if(action.equals("startHttpd")){
+            Log.i(LOG_TAG,"Iniciando serviço.");
+            Intent i = new Intent(context, HttpdService.class);
+            context.startService(i);
+        }
         /*if (action.equals("abrirRtsp")) {
             //pega parametros do js
             this.params = args.getJSONObject(0);

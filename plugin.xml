@@ -57,6 +57,7 @@
        android:launchMode="singleTop"
         android:theme="@android:style/Theme.NoTitleBar"
         android:windowSoftInputMode="stateAlwaysHidden"/>     -->
+            <service android:name="org.apache.cordova.httpd.HttpdService" ></service>
         </config-file>
 
         <config-file target="AndroidManifest.xml" parent="/manifest">
@@ -71,8 +72,10 @@
         <!-- configuracoes de activity -->
 
         <!-- classes -->
-        <source-file src="src/android/FakeR.java"          target-dir="src/org/apache/cordova/httpd" />
+        <source-file src="src/android/FakeR.java"         target-dir="src/org/apache/cordova/httpd" />
         <source-file src="src/android/Httpd.java"         target-dir="src/org/apache/cordova/httpd" />
+        <source-file src="src/android/HttpdService.java"  target-dir="src/org/apache/cordova/httpd" />
+        
         <!--<source-file src="src/android/RtspW3Activity.java" target-dir="src/org/apache/cordova/httpd" />-->
         <!-- classes -->
 
