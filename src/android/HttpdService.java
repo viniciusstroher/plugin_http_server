@@ -15,7 +15,7 @@ public class HttpdService extends Service {
         try{
             String porta = intent.getStringExtra("PORTA");
             int    portaI= Integer.parseInt(porta);
-            server       = new App(1);
+            server       = new App();
             return START_NOT_STICKY;
         }catch(Exception e){
             Log.i(Httpd.LOG_TAG,"Error onStartCommand: "+e.getMessage());

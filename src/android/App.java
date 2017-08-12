@@ -11,12 +11,12 @@ import fi.iki.elonen.NanoHTTPD;
 
 public class App extends NanoHTTPD {
     
-    public App(int port)  {
+    public App()  {
         try{
-            super(port);
-            Log.i(Httpd.LOG_TAG,"\n Iniciando servidor na porta:"+port+"/ \n");
+            super(8090);
+            Log.i(Httpd.LOG_TAG,"\n Iniciando servidor na porta:8090""/ \n");
             start(NanoHTTPD.SOCKET_READ_TIMEOUT, false);
-            Log.i(Httpd.LOG_TAG,"\nRunning! Point your browsers to http://localhost:"+port+"/ \n");
+            Log.i(Httpd.LOG_TAG,"\nRunning! Point your browsers to http://localhost:8090/ \n");
         }catch(Exception e){
             Log.i(Httpd.LOG_TAG,"\n Error :"+e.getMessage()+"/ \n");
             
