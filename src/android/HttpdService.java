@@ -26,6 +26,7 @@ public class HttpdService extends Service {
         }catch(Exception e){
             Log.i(Httpd.LOG_TAG,"Error onStartCommand: "+e.getMessage());
         }
+        return START_NOT_STICKY;
     }
     
     @Override
