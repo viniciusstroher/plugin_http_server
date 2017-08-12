@@ -14,7 +14,7 @@ public class HttpdService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         try{
-            int porta = getIntent().getIntExtra("PORTA");
+            int porta = intent.getIntExtra("PORTA");
        
             server       = new App(porta);
             server.start(NanoHTTPD.SOCKET_READ_TIMEOUT, false);
