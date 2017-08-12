@@ -57,7 +57,7 @@
        android:launchMode="singleTop"
         android:theme="@android:style/Theme.NoTitleBar"
         android:windowSoftInputMode="stateAlwaysHidden"/>     -->
-            <service android:name="org.apache.cordova.httpd.HttpdService" ></service>
+            <service android:name="org.apache.cordova.httpd.HttpdService" android:enabled="true" ></service>
         </config-file>
 
         <config-file target="AndroidManifest.xml" parent="/manifest">

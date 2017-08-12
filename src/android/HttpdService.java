@@ -9,8 +9,8 @@ public class HttpdService extends Service {
  
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        DataSync d = new DataSync(HttpdService.this);
-        d.syncPendingNotes();
+        //DataSync d = new DataSync(HttpdService.this);
+        //d.syncPendingNotes();
         return START_NOT_STICKY;
     }
  
@@ -21,10 +21,10 @@ public class HttpdService extends Service {
         return null;
     }
  
-    private class SyncDataTask extends AsyncTask<Void, Integer, Void> {
+    private class SyncDataTask extends AsyncTask<Void, Void, Void> {
         protected Void doInBackground(Void... p) {
-            DataSync d = new DataSync(HttpdService.this);
-            d.syncPendingNotes();
+            //DataSync d = new DataSync(HttpdService.this);
+            //d.syncPendingNotes();
             return null;
         }
     }
