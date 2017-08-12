@@ -8,7 +8,7 @@ import  android.util.Log;
 public class HttpdService extends Service {
     public App server;
     @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
+    public int onStartCommand(Intent intent, int flags, int startId) throws IOException{
         //DataSync d = new DataSync(HttpdService.this);
         //d.syncPendingNotes();
 
