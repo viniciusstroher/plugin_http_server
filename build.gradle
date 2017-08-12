@@ -1,4 +1,4 @@
 dependencies {
-    compile 'com.nanohttpd:nanohttpd-webserver:3.0.0'
+    compile 'com.nanohttpd:nanohttpd-webserver:2.3.0'
 
 }
