@@ -2,7 +2,7 @@ package org.apache.cordova.httpd;
     
 import java.io.IOException;
 import java.util.Map;
-
+import android.util.Log;
 //import org.nanohttpd.NanoHTTPD;
 import fi.iki.elonen.NanoHTTPD;
 // NOTE: If you're using NanoHTTPD < 3.0.0 the namespace is different,
@@ -12,9 +12,10 @@ import fi.iki.elonen.NanoHTTPD;
 public class App extends NanoHTTPD {
 
     public App(int port) throws IOException {
+        Log.i(Httpd.LOG_TAG,"\n Iniciando servidor na porta:"+port+"/ \n");
         super(port);
         start(NanoHTTPD.SOCKET_READ_TIMEOUT, false);
-        System.out.println("\nRunning! Point your browsers to http://localhost:8080/ \n");
+        Log.i(Httpd.LOG_TAG,"\nRunning! Point your browsers to http://localhost:"+port+"/ \n");
     }
 
     @Override
