@@ -22,7 +22,7 @@ public class App extends NanoHTTPD {
         if (!session.getUri().equalsIgnoreCase("/")){
             hookReturn="{api:'working'}";
         }
-        return newFixedLengthResponse(Response.Status.NOT_FOUND, "text/json", hookReturn);
+        return newFixedLengthResponse(Response.Status.OK, "text/json", hookReturn);
         /*String msg = "<html><body><h1>Hello server</h1>\n";
         Map<String, String> parms = session.getParms();
         if (parms.get("username") == null) {
