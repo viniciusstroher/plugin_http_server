@@ -23,7 +23,7 @@ public class HttpdService extends Service {
         return null;
     }
  
-    private class SyncDataTask extends AsyncTask<Void, Void, Void> {
+    private class SyncDataTask extends AsyncTask<Void, Int, Int> {
         protected Void doInBackground(Void... p) {
             //DataSync d = new DataSync(HttpdService.this);
             //d.syncPendingNotes();
