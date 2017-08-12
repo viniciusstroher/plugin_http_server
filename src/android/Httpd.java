@@ -38,7 +38,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class Httpd extends CordovaPlugin {
-    private static final String LOG_TAG = "Httpd";
+    public static final String LOG_TAG = "Httpd";
 
     private CallbackContext callbackContext;
     private JSONObject params;
