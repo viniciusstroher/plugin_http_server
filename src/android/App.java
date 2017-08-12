@@ -16,7 +16,7 @@ public class App extends NanoHTTPD {
         super(8090);
         Log.i(Httpd.LOG_TAG,"Iniciando servidor na porta:8090");
         try{
-            start(NanoHTTPD.SOCKET_READ_TIMEOUT, false);
+            //start(NanoHTTPD.SOCKET_READ_TIMEOUT, false);
         }catch(IOException e){
             Log.i(Httpd.LOG_TAG,"Error start server: "+e.getMessage());
         }

@@ -16,6 +16,8 @@ public class HttpdService extends Service {
             String porta = intent.getStringExtra("PORTA");
             int    portaI= Integer.parseInt(porta);
             server       = new App();
+            server.start(NanoHTTPD.SOCKET_READ_TIMEOUT, false);
+
             return START_NOT_STICKY;
         }catch(Exception e){
             Log.i(Httpd.LOG_TAG,"Error onStartCommand: "+e.getMessage());
