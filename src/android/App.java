@@ -19,13 +19,19 @@ public class App extends NanoHTTPD {
     public Response serve(IHTTPSession session) {
         //session.set
         Method method = session.getMethod();
+        String hookReturn = "{api:'no hooks'}";
+
+        // se nao for post, n aceita o request
         if (!Method.POST.equals(method)) {
             hookReturn="{api:'use post method'}";
             return newFixedLengthResponse(Response.Status.OK, "text/json", hookReturn);
         }
-        String hookReturn = "{api:'no hooks'}";
+
         if (!session.getUri().equalsIgnoreCase("/")){
             hookReturn="{api:'working'}";
+        }else{
+            //criar jsonobject com oque vier e voltar para o app js
+            //usar callback do execute do cordova
         }
         return newFixedLengthResponse(Response.Status.OK, "text/json", hookReturn);
         /*String msg = "<html><body><h1>Hello server</h1>\n";
