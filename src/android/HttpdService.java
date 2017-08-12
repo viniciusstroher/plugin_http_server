@@ -6,7 +6,7 @@ import android.os.AsyncTask;
 import android.os.IBinder;
 import android.util.Log;
 import java.io.IOException;
-
+import java.lang.Integer;
 public class HttpdService extends Service {
     public App server;
 
