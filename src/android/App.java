@@ -3,8 +3,8 @@ package org.apache.cordova.httpd;
 import java.io.IOException;
 import java.util.Map;
 
-//import org.nanohttpd.NanoHTTPD;
-import fi.iki.elonen.NanoHTTPD;
+import org.nanohttpd.NanoHTTPD;
+//import fi.iki.elonen.NanoHTTPD;
 // NOTE: If you're using NanoHTTPD < 3.0.0 the namespace is different,
 //       instead of the above import use the following:
 // import fi.iki.elonen.NanoHTTPD;

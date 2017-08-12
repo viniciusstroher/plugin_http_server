@@ -1,5 +1,4 @@
 dependencies {
-	runtime(
-		[group: 'org.nanohttpd', name: 'nanohttpd', version: 'CURRENT_VERSION'],
-	)
+    compile 'com.nanohttpd:nanohttpd-webserver:3.0.0'
+
 }
