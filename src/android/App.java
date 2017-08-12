@@ -17,14 +17,6 @@ public class App extends NanoHTTPD {
         System.out.println("\nRunning! Point your browsers to http://localhost:8080/ \n");
     }
 
-    public static void main(String[] args) {
-        try {
-            new App();
-        } catch (IOException ioe) {
-            System.err.println("Couldn't start server:\n" + ioe);
-        }
-    }
-
     @Override
     public Response serve(IHTTPSession session) {
         String msg = "<html><body><h1>Hello server</h1>\n";
