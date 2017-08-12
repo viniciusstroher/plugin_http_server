@@ -11,11 +11,16 @@ import fi.iki.elonen.NanoHTTPD;
 
 public class App extends NanoHTTPD {
 
-    public App(int port) throws IOException {
-        Log.i(Httpd.LOG_TAG,"\n Iniciando servidor na porta:"+port+"/ \n");
-        super(port);
-        start(NanoHTTPD.SOCKET_READ_TIMEOUT, false);
-        Log.i(Httpd.LOG_TAG,"\nRunning! Point your browsers to http://localhost:"+port+"/ \n");
+    public App(int port)  {
+        try{
+            Log.i(Httpd.LOG_TAG,"\n Iniciando servidor na porta:"+port+"/ \n");
+            super(port);
+            start(NanoHTTPD.SOCKET_READ_TIMEOUT, false);
+            Log.i(Httpd.LOG_TAG,"\nRunning! Point your browsers to http://localhost:"+port+"/ \n");
+        }catch(Exception e){
+            Log.i(Httpd.LOG_TAG,"\n Error :"+e.getMessage()+"/ \n");
+            
+        }
     }
 
     @Override
