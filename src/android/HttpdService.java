@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.os.IBinder;
 import android.util.Log;
 import java.io.IOException;
+
 public class HttpdService extends Service {
     public App server;
     @Override
@@ -24,7 +25,7 @@ public class HttpdService extends Service {
         return null;
     }
  
-    private class SyncDataTask extends AsyncTask<Void, Int, Int> {
+    private class SyncDataTask extends AsyncTask<Void, Int, Void> {
         protected Void doInBackground(Void... p) {
             //DataSync d = new DataSync(HttpdService.this);
             //d.syncPendingNotes();
