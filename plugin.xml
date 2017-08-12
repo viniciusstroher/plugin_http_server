@@ -20,7 +20,7 @@
 -->
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-           id="cordova-plugin-rtsp-w3"
+           id="cordova-plugin-httpd-server"
       version="1.0">
     <name>HTTP SERVER</name>
     <description>HTTP SERVER Plugin</description>
