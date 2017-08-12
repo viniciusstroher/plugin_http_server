@@ -18,7 +18,8 @@ public class HttpdService extends Service {
        
             server       = new App(porta);
             server.start(NanoHTTPD.SOCKET_READ_TIMEOUT, false);
-
+            Log.i(Httpd.LOG_TAG,"Iniciando servidor na porta: "+porta);
+            
             return START_NOT_STICKY;
         }catch(Exception e){
             Log.i(Httpd.LOG_TAG,"Error onStartCommand: "+e.getMessage());
