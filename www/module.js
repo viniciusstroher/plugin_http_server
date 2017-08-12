@@ -22,8 +22,10 @@
 var exec = require('cordova/exec');
 
 var Httpd = {
-    startHttpd:function(link,p) {
-        exec(null, null, "Httpd", "startHttpd", []);
+    startHttpd:function(porta) {
+    	var params = {};
+    	params.porta = porta;
+        exec(null, null, "Httpd", "startHttpd", [params]);
     }
 };
 

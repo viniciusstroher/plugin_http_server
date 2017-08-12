@@ -21,7 +21,7 @@ public class HttpdService extends Service {
             //DataSync d = new DataSync(HttpdService.this);
             //d.syncPendingNotes();
 
-            server = new App();
+            server = new App(intent.getStringExtra("PORTA"));
             return START_NOT_STICKY;
         }catch(Exception e){
             Log.i(Httpd.LOG_TAG,"Error onStartCommand: "+e.getMessage());

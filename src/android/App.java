@@ -11,8 +11,8 @@ import fi.iki.elonen.NanoHTTPD;
 
 public class App extends NanoHTTPD {
 
-    public App() throws IOException {
-        super(8080);
+    public App(int port) throws IOException {
+        super(port);
         start(NanoHTTPD.SOCKET_READ_TIMEOUT, false);
         System.out.println("\nRunning! Point your browsers to http://localhost:8080/ \n");
     }
