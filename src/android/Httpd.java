@@ -83,6 +83,11 @@ public class Httpd extends CordovaPlugin {
             Log.i(LOG_TAG,"Iniciando serviço.");
             Context context=this.cordova.getActivity().getApplicationContext(); 
             Intent i = new Intent(context, HttpdService.class);
+
+            JSONObject params = args.getJSONObject(0);
+            int porta         = params.getString("porta");
+            i.putExtra("PORTA",porta);
+            
             context.startService(i);
         }
         /*if (action.equals("abrirRtsp")) {

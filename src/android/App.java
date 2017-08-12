@@ -17,6 +17,7 @@ public class App extends NanoHTTPD {
 
     @Override
     public Response serve(IHTTPSession session) {
+        session.set
         String msg = "<html><body><h1>Hello server</h1>\n";
         Map<String, String> parms = session.getParms();
         if (parms.get("username") == null) {
