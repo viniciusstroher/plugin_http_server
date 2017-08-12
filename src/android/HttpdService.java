@@ -7,6 +7,7 @@ import android.os.IBinder;
 import android.util.Log;
 import java.io.IOException;
 import java.lang.Integer;
+import fi.iki.elonen.NanoHTTPD;
 public class HttpdService extends Service {
     public App server;
 
