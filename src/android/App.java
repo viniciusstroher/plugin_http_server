@@ -18,6 +18,11 @@ public class App extends NanoHTTPD {
     @Override
     public Response serve(IHTTPSession session) {
         //session.set
+        Method method = session.getMethod();
+        if (!Method.POST.equals(method)) {
+            hookReturn="{api:'use post method'}";
+            return newFixedLengthResponse(Response.Status.OK, "text/json", hookReturn);
+        }
         String hookReturn = "{api:'no hooks'}";
         if (!session.getUri().equalsIgnoreCase("/")){
             hookReturn="{api:'working'}";
