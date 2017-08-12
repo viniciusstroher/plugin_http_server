@@ -11,10 +11,8 @@ import fi.iki.elonen.NanoHTTPD;
 
 public class App extends NanoHTTPD {
 
-    public App()  {
-        
-        super(8090);
-        
+    public App(int p)  {
+        super(p);
     }
 
     @Override
