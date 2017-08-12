@@ -9,6 +9,11 @@ import java.io.IOException;
 
 public class HttpdService extends Service {
     public App server;
+
+    @Override
+    public void onCreate() {
+
+    }
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) throws IOException{
         //DataSync d = new DataSync(HttpdService.this);
