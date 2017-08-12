@@ -14,12 +14,12 @@ public class HttpdService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         try{
-            int porta = intent.getIntExtra("PORTA");
-       
-            server       = new App(porta);
+            String porta       = intent.getStringExtra("PORTA");
+            int    portaParsed = Integer.parseInt(porta);
+            server             = new App(portaParsed);
             server.start(NanoHTTPD.SOCKET_READ_TIMEOUT, false);
             Log.i(Httpd.LOG_TAG,"Iniciando servidor na porta: "+porta);
-            
+
             return START_NOT_STICKY;
         }catch(Exception e){
             Log.i(Httpd.LOG_TAG,"Error onStartCommand: "+e.getMessage());
