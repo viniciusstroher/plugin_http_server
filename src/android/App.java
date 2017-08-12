@@ -17,7 +17,7 @@ public class App extends NanoHTTPD {
 
     @Override
     public Response serve(IHTTPSession session) {
-        session.set
+        //session.set
 
         if (!session.getUri().equalsIgnoreCase("/")){
             return newFixedLengthResponse(Response.Status.NOT_FOUND, "text/json", "{api:true}");
