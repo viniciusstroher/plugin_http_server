@@ -4,7 +4,8 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.IBinder;
-import  android.util.Log;
+import android.util.Log;
+import java.io.IOException;
 public class HttpdService extends Service {
     public App server;
     @Override
