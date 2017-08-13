@@ -24,29 +24,26 @@ public class App extends NanoHTTPD {
         String hookReturn = "{\"api\":\"no hooks\"}";
         Map<String, String> headers = session.getHeaders();
         Log.i(Httpd.LOG_TAG,"Recebendo Request");
-        String key    = "";
-        String value  = "";
-
-
+        
         HashMap<String, String> map = new HashMap<String, String>();
         try {
             session.parseBody(map);
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.i(Httpd.LOG_TAG,"Error parseBody : "+e.getMessage());  
         }
 
         String json = map.get("postData");
-        
+        Log.i(Httpd.LOG_TAG,"Params : "+ json);  
+
+        String key    = "";
+        String value  = "";
         for (Map.Entry<String,String> entry : headers.entrySet()) {
           key   = entry.getKey();
           value = entry.getValue();
           Log.i(Httpd.LOG_TAG,"Headers : "+ key + " - " + value);  
-
-          // do stuff
         }
 
-        Log.i(Httpd.LOG_TAG,"Params : "+ json);  
-
+        
         // se nao for post, n aceita o request
         if (!Method.POST.equals(method)) {
             hookReturn="{\"api\":\"use post method\"}";
@@ -58,6 +55,7 @@ public class App extends NanoHTTPD {
             return newFixedLengthResponse(Response.Status.OK, "text/json", hookReturn);
         }
 
+        Log.i(Httpd.LOG_TAG,"Autorizacao : "+ senha + " - " + headers.get("api-key"));  
         if(!headers.get("api-key").equals(senha)){
             hookReturn="{\"api\":\"api-key wrong\"}";
             return newFixedLengthResponse(Response.Status.OK, "text/json", hookReturn);
