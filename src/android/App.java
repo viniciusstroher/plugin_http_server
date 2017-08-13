@@ -2,6 +2,8 @@ package org.apache.cordova.httpd;
     
 import java.io.IOException;
 import java.util.Map;
+import java.util.HashMap;
+
 import android.util.Log;
 import fi.iki.elonen.NanoHTTPD;
 // NOTE: If you're using NanoHTTPD < 3.0.0 the namespace is different,
