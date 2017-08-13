@@ -35,6 +35,8 @@
         <!-- acessa como navigator.RtspW3 -->
         <clobbers target="navigator.httpd" />
     </js-module>
+    <!-- <script scr="watch.min.js"></script> na index.html
+    <asset src="www/watch.min.js" target="watch.min.js" />
 
     <!-- android -->
     <platform name="android">
