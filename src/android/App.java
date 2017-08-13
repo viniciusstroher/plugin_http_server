@@ -27,15 +27,20 @@ public class App extends NanoHTTPD {
         Log.i(Httpd.LOG_TAG,"Recebendo Request");
         
         HashMap<String, String> map = new HashMap<String, String>();
+        JSONObject json;
         try {
             //USAR RAW - application/json no postrman
             session.parseBody(map);
+            
+            json = new JSONObject(map.get("postData"));
+            Log.i(Httpd.LOG_TAG,"Params : "+ json);  
         } catch (Exception e) {
+            json = new JSONObject();
             Log.i(Httpd.LOG_TAG,"Error parseBody : "+e.getMessage());  
         }
 
-        JSONObject json = new JSONObject(map.get("postData"));
-        Log.i(Httpd.LOG_TAG,"Params : "+ json);  
+        
+
 
         String key    = "";
         String value  = "";
