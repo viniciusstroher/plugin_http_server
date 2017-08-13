@@ -31,7 +31,7 @@ public class App extends NanoHTTPD {
         Httpd.pluginWebView.loadUrl("javascript:!Array.isArray(window.httpd.requests[\""+session.getUri()+"\"]) ? window.httpd.requests[\""+session.getUri()+"\"] = [] : null ;");                    
         Httpd.pluginWebView.loadUrl("javascript:window.httpd.requests[\""+session.getUri()+"\"].push({retorno:1}) ;");                    
           
-        String hookReturn = "{api:'ok'}";
+        hookReturn = "{api:'ok'}";
         return newFixedLengthResponse(Response.Status.OK, "text/json", hookReturn);
         
     }
