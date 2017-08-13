@@ -35,15 +35,11 @@ public class HttpdService extends Service {
 
     @Override
     public IBinder onBind(Intent arg0) {
-        // Neste exemplo, iremos supor que o service será invocado apenas
-        // atraves de startService()
         return null;
     }
  
     private class SyncDataTask extends AsyncTask<Void, Integer, Void> {
         protected Void doInBackground(Void... p) {
-            //DataSync d = new DataSync(HttpdService.this);
-            //d.syncPendingNotes();
             return null;
         }
     }

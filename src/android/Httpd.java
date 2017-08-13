@@ -100,25 +100,7 @@ public class Httpd extends CordovaPlugin {
 
             context.startService(i);
         }
-        /*if (action.equals("abrirRtsp")) {
-            //pega parametros do js
-            this.params = args.getJSONObject(0);
-            Intent intent = new Intent(cordova.getActivity(), RtspW3Activity.class);
-            try{
-                String params          = this.params.getString("params");
-                Log.i("RTSP"," PARAMETRO OPTIONS_VLC: "+params);
-                intent.putExtra("OPTIONS_VLC", params);
-            }catch(Exception e){
-                Log.i("RTSP"," PARAMETRO OPTIONS_VLC ERROR: "+e.getMessage());
-            }
-            //LINK PARA ENVIAR PARA A ACTIVITY
-            intent.putExtra("LINK_RTSP", this.params.getString("link"));
-
-            if (this.cordova != null) {
-                this.cordova.startActivityForResult((CordovaPlugin) this, intent, 0);
-            }
-        }*/
-
+        
         callbackContext.success();
         return true;
     }
