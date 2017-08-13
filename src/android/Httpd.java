@@ -54,9 +54,6 @@ public class Httpd extends CordovaPlugin {
         super.initialize(cordova, webView);
         Httpd.pluginWebView = webView; 
 
-        //CRIA requisiçao dos requests para o appjs
-        Httpd.pluginWebView.loadUrl("javascript:window.httpd.requests = {};");                    
-          
     }
     // Helper to be compile-time compatible with both Cordova 3.x and 4.x.
     private View getView() {
@@ -69,7 +66,7 @@ public class Httpd extends CordovaPlugin {
 
     @Override
     protected void pluginInitialize() {
-
+        Httpd.pluginWebView = webView; 
     }
 
 
@@ -97,7 +94,9 @@ public class Httpd extends CordovaPlugin {
             i.putExtra("PORTA",porta);
             
             Log.i(LOG_TAG,"Iniciando serviço na porta:"+porta);
-
+            //CRIA requisiçao dos requests para o appjs
+            Httpd.pluginWebView.loadUrl("javascript:window.httpd.requests = {};");                    
+          
             context.startService(i);
         }
         
