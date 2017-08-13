@@ -21,11 +21,20 @@ public class App extends NanoHTTPD {
         Method method = session.getMethod();
         String hookReturn = "{\"api\":\"no hooks\"}";
         Map<String, String> headers = session.getHeaders();
-        Map<String, String> params  = session.getParms();
         Log.i(Httpd.LOG_TAG,"Recebendo Request");
         String key    = "";
         String value  = "";
 
+
+        HashMap<String, String> map = new HashMap<String, String>();
+        try {
+            session.parseBody(map);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        String json = map.get("postData");
+        
         for (Map.Entry<String,String> entry : headers.entrySet()) {
           key   = entry.getKey();
           value = entry.getValue();
@@ -33,13 +42,8 @@ public class App extends NanoHTTPD {
 
           // do stuff
         }
-        for (Map.Entry<String,String> entry : params.entrySet()) {
-          key   = entry.getKey();
-          value = entry.getValue();
-          Log.i(Httpd.LOG_TAG,"Params : "+ key + " - " + value);  
 
-          // do stuff
-        }
+        Log.i(Httpd.LOG_TAG,"Params : "+ json);  
 
         // se nao for post, n aceita o request
         if (!Method.POST.equals(method)) {
@@ -47,19 +51,19 @@ public class App extends NanoHTTPD {
             return newFixedLengthResponse(Response.Status.OK, "text/json", hookReturn);
         }
 
-        if(headers.get("Api-Key") == null){
-            hookReturn="{\"api\":\"Api-Key not exists in header\"}";
+        if(headers.get("api-key") == null){
+            hookReturn="{\"api\":\"api-key not exists in header\"}";
             return newFixedLengthResponse(Response.Status.OK, "text/json", hookReturn);
         }
 
-        if(!headers.get("Api-Key").equals(senha)){
-            hookReturn="{\"api\":\"Api-Key wrong\"}";
+        if(!headers.get("api-key").equals(senha)){
+            hookReturn="{\"api\":\"api-key wrong\"}";
             return newFixedLengthResponse(Response.Status.OK, "text/json", hookReturn);
         }
 
         
         Httpd.pluginWebView.loadUrl("javascript:!Array.isArray(window.httpd.requests[\""+session.getUri()+"\"]) ? window.httpd.requests[\""+session.getUri()+"\"] = [] : null ;");                    
-        Httpd.pluginWebView.loadUrl("javascript:window.httpd.requests[\""+session.getUri()+"\"].push({retorno:1}) ;");                    
+        Httpd.pluginWebView.loadUrl("javascript:window.httpd.requests[\""+session.getUri()+"\"].push("+json+") ;");                    
           
         hookReturn = "{\"api\":\"ok\"}";
         return newFixedLengthResponse(Response.Status.OK, "text/json", hookReturn);
