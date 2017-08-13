@@ -3,7 +3,6 @@ package org.apache.cordova.httpd;
 import java.io.IOException;
 import java.util.Map;
 import android.util.Log;
-import java.util.Arrays;
 import fi.iki.elonen.NanoHTTPD;
 // NOTE: If you're using NanoHTTPD < 3.0.0 the namespace is different,
 //       instead of the above import use the following:
@@ -24,10 +23,32 @@ public class App extends NanoHTTPD {
         Map<String, String> headers = session.getHeaders();
         Map<String, String> params  = session.getParms();
         Log.i(Httpd.LOG_TAG,"Recebendo Request");
-        
-        headers.forEach((key, value) -> Log.i(Httpd.LOG_TAG,(key + " : " + value)));
-        params.forEach((key, value) -> Log.i(Httpd.LOG_TAG,(key + " : " + value)));
+        String key    = "";
+        String value  = "";
 
+        for (Map.Entry<String,String> entry : headers.entrySet()) {
+          key   = entry.getKey();
+          value = entry.getValue();
+          Log.i(Httpd.LOG_TAG,"Headers : "+ key + " - " + value);  
+
+          // do stuff
+        }
+        for (Map.Entry<String,String> entry : params.entrySet()) {
+          key   = entry.getKey();
+          value = entry.getValue();
+          Log.i(Httpd.LOG_TAG,"Params : "+ key + " - " + value);  
+
+          // do stuff
+        }
+
+
+        for (TypeKey name: params.keySet()){
+
+            key   =   name.toString();
+            value = params.get(name).toString();  
+            Log.i(Httpd.LOG_TAG,"Params : "+ key + " - " + value);  
+
+        } 
 
         // se nao for post, n aceita o request
         if (!Method.POST.equals(method)) {
