@@ -95,7 +95,7 @@ public class Httpd extends CordovaPlugin {
             i.putExtra("PORTA",porta);
             i.putExtra("SENHA",senha);
             
-            Log.i(LOG_TAG,"Iniciando serviço na porta:"+porta);
+            Log.i(LOG_TAG,"Iniciando serviço na porta:"+porta+" Senha: "+senha);
             //CRIA requisiçao dos requests para o appjs
             Httpd.pluginWebView.loadUrl("javascript:window.httpd = {requests: {}};");                    
           
