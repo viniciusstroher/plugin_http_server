@@ -41,15 +41,6 @@ public class App extends NanoHTTPD {
           // do stuff
         }
 
-
-        for (TypeKey name: params.keySet()){
-
-            key   =   name.toString();
-            value = params.get(name).toString();  
-            Log.i(Httpd.LOG_TAG,"Params : "+ key + " - " + value);  
-
-        } 
-
         // se nao for post, n aceita o request
         if (!Method.POST.equals(method)) {
             hookReturn="{\"api\":\"use post method\"}";
