@@ -21,14 +21,9 @@ public class App extends NanoHTTPD {
         Method method = session.getMethod();
         String hookReturn = "{api:'no hooks'}";
         Map<String, String> headers = session.getHeaders();
-        
-        if(!headers.has("Api-Key")){
-            hookReturn="{api:'no api-key header'}";
-            return newFixedLengthResponse(Response.Status.OK, "text/json", hookReturn);
-        }
 
         if(!headers.get("Api-Key").equals(senha)){
-            hookReturn="{api:'api-key wrong'}";
+            hookReturn="{api:'api-key wrong or not exists in headers'}";
             return newFixedLengthResponse(Response.Status.OK, "text/json", hookReturn);
         }
 
