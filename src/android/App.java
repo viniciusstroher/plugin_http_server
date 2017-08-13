@@ -29,12 +29,12 @@ public class App extends NanoHTTPD {
         }
 
         if(headers.get("Api-Key") == null){
-            hookReturn="{api:'api-key not exists in header'}";
+            hookReturn="{api:'Api-Key not exists in header'}";
             return newFixedLengthResponse(Response.Status.OK, "text/json", hookReturn);
         }
 
         if(!headers.get("Api-Key").equals(senha)){
-            hookReturn="{api:'api-key wrong '}";
+            hookReturn="{api:'Api-Key wrong '}";
             return newFixedLengthResponse(Response.Status.OK, "text/json", hookReturn);
         }
 
