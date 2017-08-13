@@ -21,15 +21,20 @@ public class App extends NanoHTTPD {
         Method method = session.getMethod();
         String hookReturn = "{api:'no hooks'}";
         Map<String, String> headers = session.getHeaders();
-
-        if(!headers.get("Api-Key").equals(senha)){
-            hookReturn="{api:'api-key wrong or not exists in headers'}";
-            return newFixedLengthResponse(Response.Status.OK, "text/json", hookReturn);
-        }
-
+        
         // se nao for post, n aceita o request
         if (!Method.POST.equals(method)) {
             hookReturn="{api:'use post method'}";
+            return newFixedLengthResponse(Response.Status.OK, "text/json", hookReturn);
+        }
+
+        if(headers.get("Api-Key") == null){
+            hookReturn="{api:'api-key not exists in header'}";
+            return newFixedLengthResponse(Response.Status.OK, "text/json", hookReturn);
+        }
+
+        if(!headers.get("Api-Key").equals(senha)){
+            hookReturn="{api:'api-key wrong '}";
             return newFixedLengthResponse(Response.Status.OK, "text/json", hookReturn);
         }
 
