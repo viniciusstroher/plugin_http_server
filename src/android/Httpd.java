@@ -40,10 +40,10 @@ import fi.iki.elonen.NanoHTTPD;
 
 public class Httpd extends CordovaPlugin {
     public static final String LOG_TAG = "Httpd";
-
+    public static CordovaWebView pluginWebView;
     private CallbackContext callbackContext;
     private JSONObject params;
-
+    
     /**
      * Remember last device orientation to detect orientation changes.
      */
