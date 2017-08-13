@@ -27,7 +27,7 @@ public class App extends NanoHTTPD {
             return newFixedLengthResponse(Response.Status.OK, "text/json", hookReturn);
         }
 
-        if (!session.getUri().equalsIgnoreCase("/")){
+        if (session.getUri().equalsIgnoreCase("/")){
             hookReturn="{api:'working'}";
         }else{
             //criar jsonobject com oque vier e voltar para o app js
