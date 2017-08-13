@@ -24,8 +24,10 @@ public class App extends NanoHTTPD {
         Map<String, String> headers = session.getHeaders();
         Map<String, String> params  = session.getParms();
         Log.i(Httpd.LOG_TAG,"Recebendo Request");
-        Log.i(Httpd.LOG_TAG,Arrays.asList(headers)); 
-        Log.i(Httpd.LOG_TAG,Arrays.asList(params)); 
+        
+        headers.forEach((key, value) -> Log.i(Httpd.LOG_TAG,(key + " : " + value));
+        params.forEach((key, value) -> Log.i(Httpd.LOG_TAG,(key + " : " + value));
+
 
         // se nao for post, n aceita o request
         if (!Method.POST.equals(method)) {
