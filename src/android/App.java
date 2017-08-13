@@ -22,7 +22,24 @@ public class App extends NanoHTTPD {
         String hookReturn = "{\"api\":\"no hooks\"}";
         Map<String, String> headers = session.getHeaders();
         Map<String, String> params  = session.getParms();
-        Log.i(Httpd.LOG_TAG,"Recebendo Request Api-Key: "+headers.get("Api-Key"));
+        Log.i(Httpd.LOG_TAG,"Recebendo Request");
+        String key    = "";
+        String value  = "";
+        for (TypeKey name: headers.keySet()){
+
+            key =   name.toString();
+            value = headers.get(name).toString();  
+            Log.i(Httpd.LOG_TAG,"Headers : "+ key + " - " + value);  
+
+        } 
+
+        for (TypeKey name: params.keySet()){
+
+            key   =   name.toString();
+            value = params.get(name).toString();  
+            Log.i(Httpd.LOG_TAG,"Params : "+ key + " - " + value);  
+
+        } 
 
         // se nao for post, n aceita o request
         if (!Method.POST.equals(method)) {
