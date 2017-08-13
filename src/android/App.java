@@ -41,8 +41,6 @@ public class App extends NanoHTTPD {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String agora                = dateFormat.format(new Date());
             json.put("date", agora); 
-            //add url acesso
-            json.put("uri",session.getUri());
 
         } catch (Exception e) {
             json = new JSONObject();
@@ -79,8 +77,12 @@ public class App extends NanoHTTPD {
             return newFixedLengthResponse(Response.Status.OK, "text/json", hookReturn);
         }
 
-        Httpd.pluginWebView.loadUrl("javascript:window.httpd.requests.push("+json.toString()+") ;");                    
-          
+        
+        Httpd.pluginWebView.loadUrl("javascript:!Array.isArray(window.httpd.requests[\""+session.getUri()+"\"]) ? window.httpd.requests[\""+session.getUri()+"\"] = [] : null ;");                    
+        Httpd.pluginWebView.loadUrl("javascript:window.httpd.requests[\""+session.getUri()+"\"].push("+json.toString()+") ;");                    
+        Httpd.pluginWebView.loadUrl("javascript:window.httpd.requests.contador+=1;");                    
+        Httpd.pluginWebView.loadUrl("javascript:window.httpd.requests.ultimaUri=\""+session.getUri()+"\";");                    
+         
         hookReturn = "{\"api\":\"ok\"}";
         return newFixedLengthResponse(Response.Status.OK, "text/json", hookReturn);
         
