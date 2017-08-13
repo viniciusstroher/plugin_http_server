@@ -8,6 +8,7 @@ import org.json.JSONObject;
 import android.util.Log;
 import fi.iki.elonen.NanoHTTPD;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 // NOTE: If you're using NanoHTTPD < 3.0.0 the namespace is different,
 //       instead of the above import use the following:
 // import fi.iki.elonen.NanoHTTPD;
