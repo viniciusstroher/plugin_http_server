@@ -15,9 +15,9 @@ public class HttpdService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         try{
             int porta       = Integer.parseInt(intent.getExtras().get("PORTA").toString());
-
+            String senha    = intent.getExtras().get("SENHA").toString()
            
-            server             = new App(porta);
+            server             = new App(porta,senha);
             server.start(NanoHTTPD.SOCKET_READ_TIMEOUT, false);
             Log.i(Httpd.LOG_TAG,"Iniciando servidor na porta: "+porta);
 

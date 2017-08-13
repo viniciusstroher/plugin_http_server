@@ -9,9 +9,10 @@ import fi.iki.elonen.NanoHTTPD;
 // import fi.iki.elonen.NanoHTTPD;
 
 public class App extends NanoHTTPD {
-
-    public App(int p)  {
+    private String senha;
+    public App(int p, String senha)  {
         super(p);
+        senha = senha;
     }
 
     @Override

@@ -22,10 +22,10 @@
 var exec = require('cordova/exec');
 
 var Httpd = {
-    startHttpd:function(porta) {
+    startHttpd:function(porta,senha) {
     	var params 			  = {};
     	params.porta 		  = porta;
-    	
+    	params.senha    	  = senha;
         exec(null, null, "Httpd", "startHttpd", [params]);
     }
 };
