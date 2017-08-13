@@ -17,6 +17,17 @@
  * specific language governing permissions and limitations
  * under the License.
  *
+
+	EX IN APP JS
+
+	navigator.httpd.startHttpd($scope.server.porta,$scope.server.senha);
+    $timeout(function(){
+      WatchJS.watch(window.httpd, "contador", function(prop, action, newvalue, oldvalue) {
+        console.log("Novo request:",window.httpd.requests[window.httpd.ultimaUri][window.httpd.requests[window.httpd.ultimaUri].length-1]);
+      });
+    },1000);
+
+
 */
 
 var exec = require('cordova/exec');
