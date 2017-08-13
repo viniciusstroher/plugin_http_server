@@ -24,6 +24,8 @@ import android.widget.RelativeLayout;
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CordovaWebView;
+import org.apache.cordova.CordovaInterface;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 
@@ -43,7 +45,7 @@ public class Httpd extends CordovaPlugin {
     public static CordovaWebView pluginWebView;
     private CallbackContext callbackContext;
     private JSONObject params;
-    
+
     /**
      * Remember last device orientation to detect orientation changes.
      */
