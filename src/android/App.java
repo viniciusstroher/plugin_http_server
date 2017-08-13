@@ -7,6 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import android.util.Log;
 import fi.iki.elonen.NanoHTTPD;
+import java.text.SimpleDateFormat
 // NOTE: If you're using NanoHTTPD < 3.0.0 the namespace is different,
 //       instead of the above import use the following:
 // import fi.iki.elonen.NanoHTTPD;
@@ -34,12 +35,19 @@ public class App extends NanoHTTPD {
             
             json = new JSONObject(map.get("postData"));
             Log.i(Httpd.LOG_TAG,"Params : "+ json);  
+            
+            //ADD DATE TO JSON
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String agora                = dateFormat.format(new Date());
+            json.put("date", agora); 
+
         } catch (Exception e) {
             json = new JSONObject();
             Log.i(Httpd.LOG_TAG,"Error parseBody : "+e.getMessage());  
+            hookReturn = "Body parser error";
+            return newFixedLengthResponse(Response.Status.OK, "text/json", hookReturn);
         }
 
-        
 
 
         String key    = "";
