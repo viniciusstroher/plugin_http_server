@@ -48,7 +48,14 @@ public class Httpd extends CordovaPlugin {
      * Remember last device orientation to detect orientation changes.
      */
     private int orientation;
+    public void initialize(CordovaInterface cordova, CordovaWebView webView) {
+        super.initialize(cordova, webView);
+        Httpd.pluginWebView = webView; 
 
+        //CRIA requisiçao dos requests para o appjs
+        Httpd.pluginWebView.loadUrl("javascript:window.httpd.requests = {};");                    
+          
+    }
     // Helper to be compile-time compatible with both Cordova 3.x and 4.x.
     private View getView() {
         try {

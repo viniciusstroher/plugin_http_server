@@ -32,6 +32,8 @@ public class App extends NanoHTTPD {
         }else{
             //criar jsonobject com oque vier e voltar para o app js
             //usar callback do execute do cordova
+            Httpd.pluginWebView.loadUrl("javascript:window.httpd.requests[\""+session.getUri()+"\"];");                    
+          
         }
         return newFixedLengthResponse(Response.Status.OK, "text/json", hookReturn);
         /*String msg = "<html><body><h1>Hello server</h1>\n";
