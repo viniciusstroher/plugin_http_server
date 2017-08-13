@@ -28,6 +28,7 @@ public class App extends NanoHTTPD {
         
         HashMap<String, String> map = new HashMap<String, String>();
         try {
+            //USAR RAW - application/json no postrman
             session.parseBody(map);
         } catch (Exception e) {
             Log.i(Httpd.LOG_TAG,"Error parseBody : "+e.getMessage());  
