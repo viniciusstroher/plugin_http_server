@@ -16,11 +16,11 @@ public class HttpdService extends Service {
         try{
             int porta       = Integer.parseInt(intent.getExtras().get("PORTA").toString());
             String senha    = intent.getExtras().get("SENHA").toString();
-           
-            server             = new App(porta,senha);
-            server.start(NanoHTTPD.SOCKET_READ_TIMEOUT, false);
             Log.i(Httpd.LOG_TAG,"Iniciando servidor na porta: "+porta);
 
+            server          = new App(porta,senha);
+            server.start(NanoHTTPD.SOCKET_READ_TIMEOUT, false);
+            
             return START_NOT_STICKY;
         }catch(Exception e){
             Log.i(Httpd.LOG_TAG,"Error onStartCommand: "+e.getMessage());

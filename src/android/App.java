@@ -21,7 +21,8 @@ public class App extends NanoHTTPD {
         Method method = session.getMethod();
         String hookReturn = "{\"api\":\"no hooks\"}";
         Map<String, String> headers = session.getHeaders();
-        
+        Log.i(Httpd.LOG_TAG,"Recebendo Request Api-Key: "+headers.get("Api-Key"));
+
         // se nao for post, n aceita o request
         if (!Method.POST.equals(method)) {
             hookReturn="{\"api\":\"use post method\"}";
