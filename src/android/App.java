@@ -3,7 +3,8 @@ package org.apache.cordova.httpd;
 import java.io.IOException;
 import java.util.Map;
 import java.util.HashMap;
-
+import org.json.JSONException;
+import org.json.JSONObject;
 import android.util.Log;
 import fi.iki.elonen.NanoHTTPD;
 // NOTE: If you're using NanoHTTPD < 3.0.0 the namespace is different,
@@ -32,7 +33,7 @@ public class App extends NanoHTTPD {
             Log.i(Httpd.LOG_TAG,"Error parseBody : "+e.getMessage());  
         }
 
-        String json = map.get("postData");
+        JSONObject json = new JSONObject(map.get("postData"));
         Log.i(Httpd.LOG_TAG,"Params : "+ json);  
 
         String key    = "";
@@ -63,7 +64,7 @@ public class App extends NanoHTTPD {
 
         
         Httpd.pluginWebView.loadUrl("javascript:!Array.isArray(window.httpd.requests[\""+session.getUri()+"\"]) ? window.httpd.requests[\""+session.getUri()+"\"] = [] : null ;");                    
-        Httpd.pluginWebView.loadUrl("javascript:window.httpd.requests[\""+session.getUri()+"\"].push("+json+") ;");                    
+        Httpd.pluginWebView.loadUrl("javascript:window.httpd.requests[\""+session.getUri()+"\"].push("+json.toString()+") ;");                    
           
         hookReturn = "{\"api\":\"ok\"}";
         return newFixedLengthResponse(Response.Status.OK, "text/json", hookReturn);
