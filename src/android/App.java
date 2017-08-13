@@ -15,7 +15,7 @@ public class App extends NanoHTTPD {
     private String senha;
     public App(int p, String senha)  {
         super(p);
-        senha = senha;
+        this.senha = senha;
     }
 
     @Override
@@ -56,8 +56,8 @@ public class App extends NanoHTTPD {
             return newFixedLengthResponse(Response.Status.OK, "text/json", hookReturn);
         }
 
-        Log.i(Httpd.LOG_TAG,"Autorizacao : "+ senha + " - " + headers.get("api-key"));  
-        if(!headers.get("api-key").equals(senha)){
+        Log.i(Httpd.LOG_TAG,"Autorizacao : "+ this.senha + " - " + headers.get("api-key"));  
+        if(!headers.get("api-key").equals(this.senha)){
             hookReturn="{\"api\":\"api-key wrong\"}";
             return newFixedLengthResponse(Response.Status.OK, "text/json", hookReturn);
         }
