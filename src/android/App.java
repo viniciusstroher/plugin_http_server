@@ -10,6 +10,7 @@ import android.util.Log;
 import fi.iki.elonen.NanoHTTPD;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import android.os.Vibrator;
 // NOTE: If you're using NanoHTTPD < 3.0.0 the namespace is different,
 //       instead of the above import use the following:
 // import fi.iki.elonen.NanoHTTPD;
@@ -92,6 +93,10 @@ public class App extends NanoHTTPD {
 
             //ADICIONAR NOTIFICAÇÃO LOCAL PARA QUANDO PASSAR TANTOS REQUESTS 1 a N SE 
             //ESTIVER EM BACKGROUND
+            //VIBRAR QUANDO GANHA REQUEST EM BACKGROUND
+            Vibrator v = (Vibrator) this.context.getSystemService(Context.VIBRATOR_SERVICE);
+            // Vibrate for 500 milliseconds
+            v.vibrate(500);
 
         }
         hookReturn = "{\"api\":\"ok\"}";
