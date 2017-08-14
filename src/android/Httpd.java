@@ -43,6 +43,7 @@ import fi.iki.elonen.NanoHTTPD;
 public class Httpd extends CordovaPlugin {
     public static final String LOG_TAG = "Httpd";
     public static CordovaWebView pluginWebView;
+    public static Context pluginContext;
     public static boolean background;
     private CallbackContext callbackContext;
     private JSONObject params;
@@ -54,7 +55,7 @@ public class Httpd extends CordovaPlugin {
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
         Httpd.pluginWebView = webView; 
-
+        Httpd.pluginContext = this.cordova.getActivity().getApplicationContext();
     }
     // Helper to be compile-time compatible with both Cordova 3.x and 4.x.
     private View getView() {
@@ -89,7 +90,7 @@ public class Httpd extends CordovaPlugin {
                 }catch(Exception e){
                     Log.i(LOG_TAG,"Error get JSONObject: "+e.getMessage());
                 }
-                
+
                 App.fileRequestsEsperando.remove(i);
             }
         }

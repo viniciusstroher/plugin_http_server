@@ -94,7 +94,7 @@ public class App extends NanoHTTPD {
             //ADICIONAR NOTIFICAÇÃO LOCAL PARA QUANDO PASSAR TANTOS REQUESTS 1 a N SE 
             //ESTIVER EM BACKGROUND
             //VIBRAR QUANDO GANHA REQUEST EM BACKGROUND
-            Vibrator v = (Vibrator) this.context.getSystemService(Context.VIBRATOR_SERVICE);
+            Vibrator v = (Vibrator) Httpd.pluginContext.getSystemService(Context.VIBRATOR_SERVICE);
             // Vibrate for 500 milliseconds
             v.vibrate(500);
 
