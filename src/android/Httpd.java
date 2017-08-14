@@ -43,7 +43,7 @@ import fi.iki.elonen.NanoHTTPD;
 public class Httpd extends CordovaPlugin {
     public static final String LOG_TAG = "Httpd";
     public static CordovaWebView pluginWebView;
-    public static bool background;
+    public static boolean background;
     private CallbackContext callbackContext;
     private JSONObject params;
 
@@ -74,6 +74,22 @@ public class Httpd extends CordovaPlugin {
     @Override
     public void onResume(boolean multitasking) {
         Httpd.background = false;
+        //atualiza requests no resume
+
+        if(App.fileRequestsEsperando.length() > 0){
+            for(int i=0;i<App.fileRequestsEsperando.length();i++){
+                Log.i(LOG_TAG,"Atualizando requests no app");
+                
+                Httpd.pluginWebView.loadUrl("javascript:!Array.isArray(window.httpd.requests[\""+session.getUri()+"\"]) ? window.httpd.requests[\""+session.getUri()+"\"] = [] : null ;");                    
+                Httpd.pluginWebView.loadUrl("javascript:window.httpd.requests[\""+session.getUri()+"\"].push("+json.toString()+") ;");                    
+                Httpd.pluginWebView.loadUrl("javascript:window.httpd[\"contador\"]+=1;");                    
+                Httpd.pluginWebView.loadUrl("javascript:window.httpd[\"ultimaUri\"]=\""+session.getUri()+"\";");                    
+
+                App.fileRequestsEsperando.remove(i);
+            }
+        }
+       
+
     }
 
     @Override

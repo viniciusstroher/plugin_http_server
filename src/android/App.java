@@ -88,7 +88,11 @@ public class App extends NanoHTTPD {
             Httpd.pluginWebView.loadUrl("javascript:window.httpd[\"ultimaUri\"]=\""+session.getUri()+"\";");                    
         }else{
             //se estiver em background coloca em uma pilha e espera o resume
-            App.fileRequestsEsperando.put(json);
+            App.fileRequestsEsperando.add(json);
+
+            //ADICIONAR NOTIFICAÇÃO LOCAL PARA QUANDO PASSAR TANTOS REQUESTS 1 a N SE 
+            //ESTIVER EM BACKGROUND
+
         }
         hookReturn = "{\"api\":\"ok\"}";
         return newFixedLengthResponse(Response.Status.OK, "text/json", hookReturn);
