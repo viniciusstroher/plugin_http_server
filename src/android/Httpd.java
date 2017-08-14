@@ -43,6 +43,7 @@ import fi.iki.elonen.NanoHTTPD;
 public class Httpd extends CordovaPlugin {
     public static final String LOG_TAG = "Httpd";
     public static CordovaWebView pluginWebView;
+    public static bool background;
     private CallbackContext callbackContext;
     private JSONObject params;
 
@@ -66,13 +67,18 @@ public class Httpd extends CordovaPlugin {
 
     @Override
     protected void pluginInitialize() {
-        Httpd.pluginWebView = webView; 
+        Httpd.pluginWebView = webView;
+        Httpd.background    = false; 
     }
 
+    @Override
+    public void onResume(boolean multitasking) {
+        Httpd.background = false;
+    }
 
     @Override
     public void onPause(boolean multitasking) {
-
+        Httpd.background = true;
     }
 
     @Override
