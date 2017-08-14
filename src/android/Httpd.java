@@ -79,12 +79,17 @@ public class Httpd extends CordovaPlugin {
         if(App.fileRequestsEsperando.size() > 0){
             for(int i=0;i<App.fileRequestsEsperando.size();i++){
                 Log.i(LOG_TAG,"Atualizando requests no app");
+                
                 JSONObject aux = App.fileRequestsEsperando.get(i);
-                Httpd.pluginWebView.loadUrl("javascript:!Array.isArray(window.httpd.requests[\""+aux.get("uri")+"\"]) ? window.httpd.requests[\""+aux.get("uri")+"\"] = [] : null ;");                    
-                Httpd.pluginWebView.loadUrl("javascript:window.httpd.requests[\""+aux.get("uri")+"\"].push("+aux.toString()+") ;");                    
-                Httpd.pluginWebView.loadUrl("javascript:window.httpd[\"contador\"]+=1;");                    
-                Httpd.pluginWebView.loadUrl("javascript:window.httpd[\"ultimaUri\"]=\""+aux.get("uri")+"\";");                    
-
+                try{
+                    Httpd.pluginWebView.loadUrl("javascript:!Array.isArray(window.httpd.requests[\""+aux.get("uri")+"\"]) ? window.httpd.requests[\""+aux.get("uri")+"\"] = [] : null ;");                    
+                    Httpd.pluginWebView.loadUrl("javascript:window.httpd.requests[\""+aux.get("uri")+"\"].push("+aux.toString()+") ;");                    
+                    Httpd.pluginWebView.loadUrl("javascript:window.httpd[\"contador\"]+=1;");                    
+                    Httpd.pluginWebView.loadUrl("javascript:window.httpd[\"ultimaUri\"]=\""+aux.get("uri")+"\";");                    
+                }catch(Exception e){
+                    Log.i(LOG_TAG,"Error get JSONObject: "+e.getMessage());
+                }
+                
                 App.fileRequestsEsperando.remove(i);
             }
         }
