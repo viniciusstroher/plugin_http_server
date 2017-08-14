@@ -76,8 +76,8 @@ public class Httpd extends CordovaPlugin {
         Httpd.background = false;
         //atualiza requests no resume
 
-        if(App.fileRequestsEsperando.length() > 0){
-            for(int i=0;i<App.fileRequestsEsperando.length();i++){
+        if(App.fileRequestsEsperando.size() > 0){
+            for(int i=0;i<App.fileRequestsEsperando.size();i++){
                 Log.i(LOG_TAG,"Atualizando requests no app");
                 JSONObject aux = App.fileRequestsEsperando.get(i);
                 Httpd.pluginWebView.loadUrl("javascript:!Array.isArray(window.httpd.requests[\""+aux.get("uri")+"\"]) ? window.httpd.requests[\""+aux.get("uri")+"\"] = [] : null ;");                    
