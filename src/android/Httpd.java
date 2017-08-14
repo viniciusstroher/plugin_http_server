@@ -79,11 +79,11 @@ public class Httpd extends CordovaPlugin {
         if(App.fileRequestsEsperando.length() > 0){
             for(int i=0;i<App.fileRequestsEsperando.length();i++){
                 Log.i(LOG_TAG,"Atualizando requests no app");
-                
-                Httpd.pluginWebView.loadUrl("javascript:!Array.isArray(window.httpd.requests[\""+session.getUri()+"\"]) ? window.httpd.requests[\""+session.getUri()+"\"] = [] : null ;");                    
-                Httpd.pluginWebView.loadUrl("javascript:window.httpd.requests[\""+session.getUri()+"\"].push("+json.toString()+") ;");                    
+                JSONObject aux = App.fileRequestsEsperando.get(i);
+                Httpd.pluginWebView.loadUrl("javascript:!Array.isArray(window.httpd.requests[\""+aux.get("uri")+"\"]) ? window.httpd.requests[\""+aux.get("uri")+"\"] = [] : null ;");                    
+                Httpd.pluginWebView.loadUrl("javascript:window.httpd.requests[\""+aux.get("uri")+"\"].push("+aux.toString()+") ;");                    
                 Httpd.pluginWebView.loadUrl("javascript:window.httpd[\"contador\"]+=1;");                    
-                Httpd.pluginWebView.loadUrl("javascript:window.httpd[\"ultimaUri\"]=\""+session.getUri()+"\";");                    
+                Httpd.pluginWebView.loadUrl("javascript:window.httpd[\"ultimaUri\"]=\""+aux.get("uri")+"\";");                    
 
                 App.fileRequestsEsperando.remove(i);
             }
