@@ -1,5 +1,5 @@
 package org.apache.cordova.httpd;
-    
+import android.content.Context;    
 import java.io.IOException;
 import java.util.Map;
 import java.util.HashMap;
