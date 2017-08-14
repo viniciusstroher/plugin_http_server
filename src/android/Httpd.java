@@ -70,6 +70,8 @@ public class Httpd extends CordovaPlugin {
     protected void pluginInitialize() {
         Httpd.pluginWebView = webView;
         Httpd.background    = false; 
+        Httpd.pluginWebView.loadUrl("javascript:window.httpd = {contador:0,ultimaUri:\"\",requests: {}};");                    
+          
     }
 
     @Override
