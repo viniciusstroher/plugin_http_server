@@ -38,6 +38,11 @@ var Httpd = {
     	params.porta 		  = porta;
     	params.senha    	  = senha;
         exec(null, null, "Httpd", "startHttpd", [params]);
+    },
+
+    stopHttpd:function(porta,senha) {
+        var params            = {};
+        exec(null, null, "Httpd", "stopHttpd", [params]);
     }
 };
 

@@ -19,6 +19,7 @@ public class HttpdService extends Service {
             Log.i(Httpd.LOG_TAG,"Iniciando servidor na porta: "+porta+" Senha: "+senha);
 
             server          = new App(porta,senha);
+            Httpd.app       = server;
             server.start(NanoHTTPD.SOCKET_READ_TIMEOUT, false);
             
             return START_NOT_STICKY;
@@ -30,7 +31,8 @@ public class HttpdService extends Service {
     
     @Override
     public void onDestroy(){
-
+        Httpd.app       = null;
+        Httpd.pluginWebView.loadUrl("javascript:window.httpd_sever=false;"); 
     }
 
     @Override

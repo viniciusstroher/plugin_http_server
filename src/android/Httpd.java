@@ -45,6 +45,7 @@ public class Httpd extends CordovaPlugin {
     public static CordovaWebView pluginWebView;
     public static Context pluginContext;
     public static boolean background;
+    public static App app;
     private CallbackContext callbackContext;
     private JSONObject params;
 
@@ -54,6 +55,7 @@ public class Httpd extends CordovaPlugin {
     private int orientation;
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
+        Http.app            = null;
         Httpd.pluginWebView = webView; 
         Httpd.pluginContext = this.cordova.getActivity().getApplicationContext();
     }
@@ -68,6 +70,7 @@ public class Httpd extends CordovaPlugin {
 
     @Override
     protected void pluginInitialize() {
+        Http.app            = null;
         Httpd.pluginWebView = webView;
         Httpd.background    = false; 
         Httpd.pluginWebView.loadUrl("javascript:window.httpd = {contador:0,ultimaUri:\"\",requests: {}};");                    
@@ -128,8 +131,21 @@ public class Httpd extends CordovaPlugin {
             Log.i(LOG_TAG,"Iniciando serviço na porta:"+porta+" Senha: "+senha);
             //CRIA requisiçao dos requests para o appjs
             Httpd.pluginWebView.loadUrl("javascript:window.httpd = {contador:0,ultimaUri:\"\",requests: {}};");                    
+            Httpd.pluginWebView.loadUrl("javascript:window.httpd_sever=true;");                    
           
             context.startService(i);
+        }
+
+        if(action.equals("stopHttpd")){
+            if(Httpd.app != null){
+                try{
+                    Httpd.app.stop();
+                }catch(Exception e){
+
+                }
+                Httpd.pluginWebView.loadUrl("javascript:window.httpd_sever=false;"); 
+                Http.app            = null;
+            }
         }
         
         callbackContext.success();
