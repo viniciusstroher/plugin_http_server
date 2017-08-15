@@ -55,7 +55,7 @@ public class Httpd extends CordovaPlugin {
     private int orientation;
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
-        Http.app            = null;
+        Httpd.app            = null;
         Httpd.pluginWebView = webView; 
         Httpd.pluginContext = this.cordova.getActivity().getApplicationContext();
     }
@@ -70,7 +70,7 @@ public class Httpd extends CordovaPlugin {
 
     @Override
     protected void pluginInitialize() {
-        Http.app            = null;
+        Httpd.app            = null;
         Httpd.pluginWebView = webView;
         Httpd.background    = false; 
         Httpd.pluginWebView.loadUrl("javascript:window.httpd = {contador:0,ultimaUri:\"\",requests: {}};");                    
