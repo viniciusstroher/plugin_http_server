@@ -144,7 +144,7 @@ public class Httpd extends CordovaPlugin {
 
                 }
                 Httpd.pluginWebView.loadUrl("javascript:window.httpd_sever=false;"); 
-                Http.app            = null;
+                Httpd.app            = null;
             }
         }
         
