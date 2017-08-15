@@ -40,7 +40,7 @@ var Httpd = {
         exec(null, null, "Httpd", "startHttpd", [params]);
     },
 
-    stopHttpd:function(porta,senha) {
+    stopHttpd:function() {
         var params            = {};
         exec(null, null, "Httpd", "stopHttpd", [params]);
     }
