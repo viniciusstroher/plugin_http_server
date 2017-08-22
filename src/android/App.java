@@ -64,7 +64,7 @@ public class App extends NanoHTTPD {
           if(key.equals("http-client-ip")){
             try {
                 json.put("ip", value); 
-            }catch(Exception e){
+            }catch(JSONException e){
                 json.put("ip", "sem_ip"); 
             }
           }
