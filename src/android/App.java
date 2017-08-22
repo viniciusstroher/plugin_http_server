@@ -61,6 +61,9 @@ public class App extends NanoHTTPD {
         for (Map.Entry<String,String> entry : headers.entrySet()) {
           key   = entry.getKey();
           value = entry.getValue();
+          if(key.equals("http-client-ip")){
+            json.put("ip", value); 
+          }
           Log.i(Httpd.LOG_TAG,"Headers : "+ key + " - " + value);  
         }
 
