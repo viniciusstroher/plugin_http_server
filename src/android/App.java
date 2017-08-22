@@ -77,6 +77,16 @@ public class App extends NanoHTTPD {
             }catch(Exception e){
                 Log.i(Httpd.LOG_TAG,"Sem ip : "+e.getMessage());  
             }
+
+          }
+
+          if(key.equals("agente")){
+            try {
+                json.put("agente", value); 
+            }catch(Exception e){
+                Log.i(Httpd.LOG_TAG,"Sem agente : "+e.getMessage());  
+            }
+            
           }
           Log.i(Httpd.LOG_TAG,"Headers : "+ key + " - " + value);  
         }
