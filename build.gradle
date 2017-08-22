@@ -1,4 +1,4 @@
 dependencies {
-    compile ['com.nanohttpd:nanohttpd-webserver:2.2.0','com.android.support:support-v4:+']
+    compile 'com.nanohttpd:nanohttpd-webserver:2.2.0'
 
 }
