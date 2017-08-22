@@ -14,6 +14,16 @@ import android.os.Vibrator;
 // NOTE: If you're using NanoHTTPD < 3.0.0 the namespace is different,
 //       instead of the above import use the following:
 // import fi.iki.elonen.NanoHTTPD;
+import android.app.AlarmManager;
+import android.support.v4.app.NotificationCompat;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.app.PendingIntent;
+import android.content.pm.PackageManager;
+
+
 
 public class App extends NanoHTTPD {
     private String senha;
@@ -65,7 +75,7 @@ public class App extends NanoHTTPD {
             try {
                 json.put("ip", value); 
             }catch(Exception e){
-                json.put("ip", "sem_ip"); 
+                Log.i(Httpd.LOG_TAG,"Sem ip : "+e.getMessage());  
             }
           }
           Log.i(Httpd.LOG_TAG,"Headers : "+ key + " - " + value);  
@@ -104,6 +114,23 @@ public class App extends NanoHTTPD {
             Vibrator v = (Vibrator) Httpd.pluginContext.getSystemService(Context.VIBRATOR_SERVICE);
             // Vibrate for 500 milliseconds
             v.vibrate(500);
+
+            NotificationCompat.Builder b = new NotificationCompat.Builder(Httpd.pluginContext);
+            PendingIntent contentIntent = PendingIntent.getActivity(Httpd.pluginContext, 0, notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+
+            b.setAutoCancel(true)
+           .setDefaults(Notification.DEFAULT_ALL)
+           .setWhen(System.currentTimeMillis())         
+           .setSmallIcon(Httpd.pluginContext.getApplicationInfo().icon)
+           .setTicker("Chamada Perdida!")            
+           .setContentTitle("Chamada Perdida!")
+           .setContentText("Voce recebeu uma chamada mas seu aplicativo não estava aberto ou em realizando alguma chamada.")
+           .setDefaults(Notification.DEFAULT_LIGHTS | Notification.DEFAULT_SOUND)
+           .setContentIntent(contentIntent)
+           .setContentInfo("Info");
+            
+            NotificationManager notificationManager = (NotificationManager) Httpd.pluginContext.getSystemService(Context.NOTIFICATION_SERVICE);
+            notificationManager.notify(1, b.build());
 
         }
         hookReturn = "{\"api\":\"ok\"}";
