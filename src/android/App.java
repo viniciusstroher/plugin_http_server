@@ -114,9 +114,10 @@ public class App extends NanoHTTPD {
             Vibrator v = (Vibrator) Httpd.pluginContext.getSystemService(Context.VIBRATOR_SERVICE);
             // Vibrate for 500 milliseconds
             v.vibrate(500);
+            
 
             NotificationCompat.Builder b = new NotificationCompat.Builder(Httpd.pluginContext);
-            PendingIntent contentIntent = PendingIntent.getActivity(Httpd.pluginContext, 0, notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+            PendingIntent contentIntent = PendingIntent.getActivity(Httpd.pluginContext, 0, null, PendingIntent.FLAG_CANCEL_CURRENT);
 
             b.setAutoCancel(true)
            .setDefaults(Notification.DEFAULT_ALL)
