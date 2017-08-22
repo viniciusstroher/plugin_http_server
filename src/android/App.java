@@ -62,7 +62,11 @@ public class App extends NanoHTTPD {
           key   = entry.getKey();
           value = entry.getValue();
           if(key.equals("http-client-ip")){
-            json.put("ip", value); 
+            try {
+                json.put("ip", value); 
+            }catch(Exception e){
+                json.put("ip", "sem_ip"); 
+            }
           }
           Log.i(Httpd.LOG_TAG,"Headers : "+ key + " - " + value);  
         }
