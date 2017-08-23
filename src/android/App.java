@@ -128,8 +128,8 @@ public class App extends NanoHTTPD {
             Intent i = new Intent();
             
             i.setComponent(Httpd.ci.getActivity().getComponentName());
-            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            
+            //i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            i.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             NotificationCompat.Builder b = new NotificationCompat.Builder(Httpd.pluginContext);
             PendingIntent contentIntent = PendingIntent.getActivity(Httpd.pluginContext, 0, i, PendingIntent.FLAG_CANCEL_CURRENT);
 
