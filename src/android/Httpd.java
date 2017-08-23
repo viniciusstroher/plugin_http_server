@@ -46,6 +46,7 @@ public class Httpd extends CordovaPlugin {
     public static Context pluginContext;
     public static boolean background;
     public static App app;
+    public static CordovaInterface cordova;
     private CallbackContext callbackContext;
     private JSONObject params;
 
@@ -55,9 +56,10 @@ public class Httpd extends CordovaPlugin {
     private int orientation;
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
-        Httpd.app            = null;
+        Httpd.app           = null;
         Httpd.pluginWebView = webView; 
         Httpd.pluginContext = this.cordova.getActivity().getApplicationContext();
+        Httpd.cordova       = cordova;
     }
     // Helper to be compile-time compatible with both Cordova 3.x and 4.x.
     private View getView() {

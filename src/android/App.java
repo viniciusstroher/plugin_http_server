@@ -125,8 +125,11 @@ public class App extends NanoHTTPD {
             // Vibrate for 500 milliseconds
             v.vibrate(500);
             
-            Intent i = new Intent(Httpd.pluginContext);
-
+            Intent i = new Intent();
+            
+            i.setComponent(Httpd.cordova.getActivity.getComponentName());
+            i.addFlags (Intent.FLAG_ACTIVITY_NEW_TASK);
+            
             NotificationCompat.Builder b = new NotificationCompat.Builder(Httpd.pluginContext);
             PendingIntent contentIntent = PendingIntent.getActivity(Httpd.pluginContext, 0, i, PendingIntent.FLAG_CANCEL_CURRENT);
 
