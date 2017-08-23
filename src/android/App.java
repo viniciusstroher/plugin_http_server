@@ -125,17 +125,20 @@ public class App extends NanoHTTPD {
             // Vibrate for 500 milliseconds
             v.vibrate(500);
             
+            Intent i = new Intent(getActivity()); 
+
+            Intent notificationIntent = pm.getLaunchIntentForPackage("com.racionaltec");
 
             NotificationCompat.Builder b = new NotificationCompat.Builder(Httpd.pluginContext);
-            PendingIntent contentIntent = PendingIntent.getActivity(Httpd.pluginContext, 0, null, PendingIntent.FLAG_CANCEL_CURRENT);
+            PendingIntent contentIntent = PendingIntent.getActivity(Httpd.pluginContext, 0, i, PendingIntent.FLAG_CANCEL_CURRENT);
 
             b.setAutoCancel(true)
            .setDefaults(Notification.DEFAULT_ALL)
            .setWhen(System.currentTimeMillis())         
            .setSmallIcon(Httpd.pluginContext.getApplicationInfo().icon)
-           .setTicker("Chamada Perdida!")            
-           .setContentTitle("Chamada Perdida!")
-           .setContentText("Voce recebeu uma chamada mas seu aplicativo não estava aberto ou em realizando alguma chamada.")
+           .setTicker("Evento")            
+           .setContentTitle("Evento recebido!!")
+           .setContentText("Voce recebeu um novo evento, confira já.")
            .setDefaults(Notification.DEFAULT_LIGHTS | Notification.DEFAULT_SOUND)
            .setContentIntent(contentIntent)
            .setContentInfo("Info");
