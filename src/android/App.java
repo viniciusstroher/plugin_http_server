@@ -125,7 +125,8 @@ public class App extends NanoHTTPD {
             // Vibrate for 500 milliseconds
             v.vibrate(500);
             
-            Intent i = new Intent(); 
+            Intent i = new Intent("android.intent.action.MAIN");
+
             NotificationCompat.Builder b = new NotificationCompat.Builder(Httpd.pluginContext);
             PendingIntent contentIntent = PendingIntent.getActivity(Httpd.pluginContext, 0, i, PendingIntent.FLAG_CANCEL_CURRENT);
 
