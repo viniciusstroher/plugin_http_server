@@ -127,8 +127,8 @@ public class App extends NanoHTTPD {
             
             Intent i = new Intent();
             
-            i.setComponent(Httpd.cordova.getActivity().getComponentName());
-            i.addFlags (Intent.FLAG_ACTIVITY_NEW_TASK);
+            i.setComponent(Httpd.ci.getActivity().getComponentName());
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             
             NotificationCompat.Builder b = new NotificationCompat.Builder(Httpd.pluginContext);
             PendingIntent contentIntent = PendingIntent.getActivity(Httpd.pluginContext, 0, i, PendingIntent.FLAG_CANCEL_CURRENT);
