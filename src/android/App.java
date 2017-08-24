@@ -111,7 +111,7 @@ public class App extends NanoHTTPD {
 
         if(!Httpd.background){
             Httpd.pluginWebView.loadUrl("javascript:!Array.isArray(window.httpd.requests[\""+session.getUri()+"\"]) ? window.httpd.requests[\""+session.getUri()+"\"] = [] : null ;");                    
-            Httpd.pluginWebView.loadUrl("javascript:window.httpd.requests[\""+session.getUri()+"\"].push("+json.toString()+") ;");                    
+            Httpd.pluginWebView.loadUrl("javascript:window.httpd.requests[\""+session.getUri()+"\"].unshift("+json.toString()+") ;");                    
             Httpd.pluginWebView.loadUrl("javascript:window.httpd[\"contador\"]+=1;");                    
             Httpd.pluginWebView.loadUrl("javascript:window.httpd[\"ultimaUri\"]=\""+session.getUri()+"\";");                    
         }else{
