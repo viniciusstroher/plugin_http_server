@@ -129,7 +129,7 @@ public class Httpd extends CordovaPlugin {
             JSONObject params = args.getJSONObject(0);
             int porta         = params.getInt("porta");
             String senha      = params.getString("senha");
-            Httpd.notificar   = params.getBoolean('notificar');
+            Httpd.notificar   = params.getBoolean("notificar");
             i.putExtra("PORTA",porta);
             i.putExtra("SENHA",senha);
             
