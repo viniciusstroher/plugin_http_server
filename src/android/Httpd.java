@@ -85,8 +85,9 @@ public class Httpd extends CordovaPlugin {
         //atualiza requests no resume
 
         if(App.fileRequestsEsperando.size() > 0){
+            Log.i(LOG_TAG,"Atualizando requests no app JSONS: "+App.fileRequestsEsperando.size());
             for(int i=0;i<App.fileRequestsEsperando.size();i++){
-                Log.i(LOG_TAG,"Atualizando requests no app");
+                
                 
                 JSONObject aux = App.fileRequestsEsperando.get(i);
                 try{
