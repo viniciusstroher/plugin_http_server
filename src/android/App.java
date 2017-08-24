@@ -121,33 +121,35 @@ public class App extends NanoHTTPD {
             //ADICIONAR NOTIFICAÇÃO LOCAL PARA QUANDO PASSAR TANTOS REQUESTS 1 a N SE 
             //ESTIVER EM BACKGROUND
             //VIBRAR QUANDO GANHA REQUEST EM BACKGROUND
-            Vibrator v = (Vibrator) Httpd.pluginContext.getSystemService(Context.VIBRATOR_SERVICE);
-            // Vibrate for 500 milliseconds
-            v.vibrate(500);
-            
-            Intent i = new Intent();
-            
-            i.setComponent(Httpd.ci.getActivity().getComponentName());
-            //i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            //i.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+            if(Httpd.notificar){
+                Vibrator v = (Vibrator) Httpd.pluginContext.getSystemService(Context.VIBRATOR_SERVICE);
+                // Vibrate for 500 milliseconds
+                v.vibrate(500);
+                
+                Intent i = new Intent();
+                
+                i.setComponent(Httpd.ci.getActivity().getComponentName());
+                //i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                //i.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
 
-            NotificationCompat.Builder b = new NotificationCompat.Builder(Httpd.pluginContext);
-            PendingIntent contentIntent = PendingIntent.getActivity(Httpd.pluginContext, 0, i, PendingIntent.FLAG_CANCEL_CURRENT);
+                NotificationCompat.Builder b = new NotificationCompat.Builder(Httpd.pluginContext);
+                PendingIntent contentIntent = PendingIntent.getActivity(Httpd.pluginContext, 0, i, PendingIntent.FLAG_CANCEL_CURRENT);
 
-            b.setAutoCancel(true)
-           .setDefaults(Notification.DEFAULT_ALL)
-           .setWhen(System.currentTimeMillis())         
-           .setSmallIcon(Httpd.pluginContext.getApplicationInfo().icon)
-           .setTicker("Evento")            
-           .setContentTitle("Evento recebido!!")
-           .setContentText("Voce recebeu um novo evento, confira já.")
-           .setDefaults(Notification.DEFAULT_LIGHTS | Notification.DEFAULT_SOUND)
-           .setContentIntent(contentIntent)
-           .setContentInfo("Info");
-            
-            NotificationManager notificationManager = (NotificationManager) Httpd.pluginContext.getSystemService(Context.NOTIFICATION_SERVICE);
-            notificationManager.notify(1, b.build());
+                b.setAutoCancel(true)
+               .setDefaults(Notification.DEFAULT_ALL)
+               .setWhen(System.currentTimeMillis())         
+               .setSmallIcon(Httpd.pluginContext.getApplicationInfo().icon)
+               .setTicker("Evento")            
+               .setContentTitle("Evento recebido!!")
+               .setContentText("Voce recebeu um novo evento, confira já.")
+               .setDefaults(Notification.DEFAULT_LIGHTS | Notification.DEFAULT_SOUND)
+               .setContentIntent(contentIntent)
+               .setContentInfo("Info");
+                
+                NotificationManager notificationManager = (NotificationManager) Httpd.pluginContext.getSystemService(Context.NOTIFICATION_SERVICE);
+                notificationManager.notify(1, b.build());
+            }
 
         }
         hookReturn = "{\"api\":\"ok\"}";

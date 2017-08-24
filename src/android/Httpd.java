@@ -45,6 +45,7 @@ public class Httpd extends CordovaPlugin {
     public static CordovaWebView pluginWebView;
     public static Context pluginContext;
     public static boolean background;
+    public static boolean notificar = false;
     public static App app;
     public static CordovaInterface ci;
     private CallbackContext callbackContext;
@@ -128,6 +129,7 @@ public class Httpd extends CordovaPlugin {
             JSONObject params = args.getJSONObject(0);
             int porta         = params.getInt("porta");
             String senha      = params.getString("senha");
+            Httpd.notificar   = params.getBoolean('notificar');
             i.putExtra("PORTA",porta);
             i.putExtra("SENHA",senha);
             

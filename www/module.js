@@ -33,10 +33,11 @@
 var exec = require('cordova/exec');
 
 var Httpd = {
-    startHttpd:function(porta,senha) {
+    startHttpd:function(porta,senha,notificar) {
     	var params 			  = {};
     	params.porta 		  = porta;
     	params.senha    	  = senha;
+        params.notificar      = notificar;
         exec(null, null, "Httpd", "startHttpd", [params]);
     },
 
