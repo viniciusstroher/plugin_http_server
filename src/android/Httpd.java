@@ -149,10 +149,11 @@ public class Httpd extends CordovaPlugin {
             if(Httpd.app != null){
                 try{
                     Httpd.app.stop();
-                    Httpd.online = false;
+                    
                 }catch(Exception e){
 
                 }
+                Httpd.online        = false;
                 Httpd.pluginWebView.loadUrl("javascript:window.httpd_sever=false;"); 
                 Httpd.app            = null;
             }
