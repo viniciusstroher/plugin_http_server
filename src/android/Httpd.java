@@ -140,7 +140,7 @@ public class Httpd extends CordovaPlugin {
             Log.i(LOG_TAG,"Iniciando serviço na porta:"+porta+" Senha: "+senha);
             //CRIA requisiçao dos requests para o appjs
             Httpd.pluginWebView.loadUrl("javascript:window.httpd = {contador:0,ultimaUri:\"\",requests: {}};");                    
-            Httpd.pluginWebView.loadUrl("javascript:window.httpd_sever=true;");                    
+            Httpd.pluginWebView.loadUrl("javascript:window.httpd_server=true;");                    
           
             context.startService(i);
         }
@@ -154,7 +154,7 @@ public class Httpd extends CordovaPlugin {
 
                 }
                 Httpd.online        = false;
-                Httpd.pluginWebView.loadUrl("javascript:window.httpd_sever=false;"); 
+                Httpd.pluginWebView.loadUrl("javascript:window.httpd_server=false;"); 
                 Httpd.app            = null;
             }
         }
