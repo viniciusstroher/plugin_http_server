@@ -46,6 +46,7 @@ public class Httpd extends CordovaPlugin {
     public static Context pluginContext;
     public static boolean background;
     public static boolean notificar = false;
+    public static boolean online    = false;
     public static App app;
     public static CordovaInterface ci;
     private CallbackContext callbackContext;
@@ -76,7 +77,8 @@ public class Httpd extends CordovaPlugin {
         Httpd.app            = null;
         Httpd.pluginWebView = webView;
         Httpd.background    = false; 
-        Httpd.pluginWebView.loadUrl("javascript:window.httpd = {contador:0,ultimaUri:\"\",requests: {}};");                    
+        Httpd.pluginWebView.loadUrl("javascript:window.httpd = {contador:0,ultimaUri:\"\",requests: {}};");
+        Httpd.pluginWebView.loadUrl("javascript:window.httpd_server = false;");                    
           
     }
 
@@ -86,6 +88,8 @@ public class Httpd extends CordovaPlugin {
         //atualiza requests no resume
 
         if(App.fileRequestsEsperando.size() > 0){
+            Httpd.online = true;
+            Httpd.pluginWebView.loadUrl("javascript:window.httpd_server = true;");
             Log.i(LOG_TAG,"Atualizando requests no app JSONS: "+App.fileRequestsEsperando.size());
             for(int i=0;i<App.fileRequestsEsperando.size();i++){
                 
@@ -145,6 +149,7 @@ public class Httpd extends CordovaPlugin {
             if(Httpd.app != null){
                 try{
                     Httpd.app.stop();
+                    Httpd.online = false;
                 }catch(Exception e){
 
                 }

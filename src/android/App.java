@@ -30,7 +30,9 @@ public class App extends NanoHTTPD {
     public  static ArrayList<JSONObject>  fileRequestsEsperando = new ArrayList<JSONObject>();
     public App(int p, String senha)  {
         super(p);
-        this.senha = senha;
+        this.senha   = senha;
+        Httpd.online = true;
+        Httpd.pluginWebView.loadUrl("javascript:window.httpd_server = true;");
     }
 
     @Override

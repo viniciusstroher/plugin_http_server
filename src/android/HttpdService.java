@@ -25,6 +25,8 @@ public class HttpdService extends Service {
             return START_NOT_STICKY;
         }catch(Exception e){
             Log.i(Httpd.LOG_TAG,"Error onStartCommand: "+e.getMessage());
+            Httpd.online = false;
+            Httpd.pluginWebView.loadUrl("javascript:window.httpd_server = false;");
         }
         return START_NOT_STICKY;
     }
