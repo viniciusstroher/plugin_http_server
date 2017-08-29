@@ -104,7 +104,11 @@ public class Httpd extends CordovaPlugin {
                     Log.i(LOG_TAG,"Error get JSONObject: "+e.getMessage());
                 }
 
-                App.fileRequestsEsperando.remove(i);
+                
+            }
+            
+            for(int i2=0;i2<App.fileRequestsEsperando.size();i2++){
+                App.fileRequestsEsperando.remove(i2);
             }
         }
        
