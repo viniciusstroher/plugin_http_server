@@ -131,22 +131,24 @@ public class Httpd extends CordovaPlugin {
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         if(action.equals("startHttpd")){
-            Context context=this.cordova.getActivity().getApplicationContext(); 
-            Intent i = new Intent(context, HttpdService.class);
+            if(!Httpd.online){
+                Context context=this.cordova.getActivity().getApplicationContext(); 
+                Intent i       = new Intent(context, HttpdService.class);
 
-            JSONObject params = args.getJSONObject(0);
-            int porta         = params.getInt("porta");
-            String senha      = params.getString("senha");
-            Httpd.notificar   = params.getBoolean("notificar");
-            i.putExtra("PORTA",porta);
-            i.putExtra("SENHA",senha);
-            
-            Log.i(LOG_TAG,"Iniciando serviço na porta:"+porta+" Senha: "+senha);
-            //CRIA requisiçao dos requests para o appjs
-            Httpd.pluginWebView.loadUrl("javascript:window.httpd = {contador:0,ultimaUri:\"\",requests: {}};");                    
-            Httpd.pluginWebView.loadUrl("javascript:window.httpd_server=true;");                    
-          
-            context.startService(i);
+                JSONObject params = args.getJSONObject(0);
+                int porta         = params.getInt("porta");
+                String senha      = params.getString("senha");
+                Httpd.notificar   = params.getBoolean("notificar");
+                i.putExtra("PORTA",porta);
+                i.putExtra("SENHA",senha);
+                
+                Log.i(LOG_TAG,"Iniciando serviço na porta:"+porta+" Senha: "+senha);
+                //CRIA requisiçao dos requests para o appjs
+                Httpd.pluginWebView.loadUrl("javascript:window.httpd = {contador:0,ultimaUri:\"\",requests: {}};");                    
+                Httpd.pluginWebView.loadUrl("javascript:window.httpd_server=true;");                    
+              
+                context.startService(i);
+            }
         }
 
         if(action.equals("stopHttpd")){
