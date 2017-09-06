@@ -65,15 +65,9 @@
         <!-- configuracoes de activity -->
 
         <!-- classes -->
-        <source-file src="src/android/FakeR.java"         target-dir="src/org/apache/cordova/httpd" />
         <source-file src="src/android/Httpd.java"         target-dir="src/org/apache/cordova/httpd" />
         <source-file src="src/android/HttpdService.java"  target-dir="src/org/apache/cordova/httpd" />
         <source-file src="src/android/App.java"           target-dir="src/org/apache/cordova/httpd" />
-
-        
-        <!--<source-file src="src/android/RtspW3Activity.java" target-dir="src/org/apache/cordova/httpd" />-->
-        <!-- classes -->
-        
         <!-- gradle para baixa as dependencias -->
         <framework src="build.gradle" custom="true" type="gradleReference" />
         <framework src="com.android.support:support-v4:+" />
