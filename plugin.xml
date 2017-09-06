@@ -50,15 +50,6 @@
 
         <!-- configuracoes de activity -->
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
-            
-            <!--<activity android:label="HTTPD" android:name="org.apache.cordova.httpd.RtspW3Activity">
-            </activity>
-
-            <activity android:name="io.vov.vitamio.activity.InitActivity" 
-       android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden"
-       android:launchMode="singleTop"
-        android:theme="@android:style/Theme.NoTitleBar"
-        android:windowSoftInputMode="stateAlwaysHidden"/>     -->
             <service android:name="org.apache.cordova.httpd.HttpdService" android:enabled="true" ></service>
         </config-file>
 
@@ -82,10 +73,6 @@
         
         <!--<source-file src="src/android/RtspW3Activity.java" target-dir="src/org/apache/cordova/httpd" />-->
         <!-- classes -->
-
-        <!-- templates -->
-        <source-file src="src/android/res/layout/rtsp_w3_activity.xml" target-dir="res/layout"/>
-        <!-- templates -->
         
         <!-- gradle para baixa as dependencias -->
         <framework src="build.gradle" custom="true" type="gradleReference" />
